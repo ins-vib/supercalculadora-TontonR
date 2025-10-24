@@ -50,6 +50,10 @@ public class Calculadora {
                    System.out.println("Sortir");
                    break;
                } else if (resposta == 7){
+                   System.out.println("Introdueix el nombre de vegades que vols tirar la moneda:");
+                   int_val_usuari1 = teclat.nextInt();
+                   System.out.println("Nombre de cares obtingudes: " + caresMoneda(int_val_usuari1));
+               } else if (resposta == 8){
                    System.out.println("Introdueix el preu base de l'entrada:");
                    double preu_base = teclat.nextDouble();
                    System.out.println("Es cap de setmana? (true/false):");
@@ -83,7 +87,7 @@ public class Calculadora {
        int comptador = 0;
        while (nombre != 0) {
            nombre /= 10;
-           comptador++;
+           comptador++; 
        }
        return comptador;
    }
@@ -97,7 +101,7 @@ public class Calculadora {
        }
        return suma;
    }
-
+  
 
    public static int calcularFactorial(int n) {
        int factorial = 1, i = 1;

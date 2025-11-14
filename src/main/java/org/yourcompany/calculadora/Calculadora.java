@@ -1,176 +1,220 @@
-
-
 package org.yourcompany.calculadora;
 
-
-/**
-*
-* @author Posa el teu nom
-*/
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
+
+/**
+ * Calculadora amb diverses funcions matemàtiques i utilitats.
+ * Mostra un menú per seleccionar operacions com sumes, factorials,
+ * potències, llançaments de moneda i preus d'entrada de cinema.
+ * Totes les funcions són estàtiques i poden ser cridades directament
+ * sense instanciar la classe.
+ * 
+ * @author Ruben
+ */
 public class Calculadora {
 
+    /**
+     * Constructor per defecte de la classe Calculadora.
+     * No fa res especial ja que totes les funcions són estàtiques.
+     */
+    public Calculadora() {
+        // Constructor buit per eliminar el warning de Javadoc
+    }
 
-   public static void main(String[] args) {
-       MostraMenu();
-   }
+    /**
+     * Punt d'entrada del programa.
+     * Executa el menú de la calculadora.
+     *
+     * @param args Arguments de línia de comandes (no utilitzat)
+     */
+    public static void main(String[] args) {
+        MostraMenu();
+    }
 
+    /**
+     * Calcula el nombre de dígits d’un número enter.
+     * Funciona tant per a nombres positius com negatius.
+     * Si el nombre és 0, retorna 1.
+     *
+     * @param nombre Número del qual es vol saber el nombre de dígits
+     * @return Retorna la cuantitat de dígits que conté nombre
+     */
+    public static int nombreDigits(int nombre) {
+        if (nombre == 0) {
+            return 1;
+        }       
+        int comptador = 0;
+        while (nombre != 0) {
+            nombre /= 10;
+            comptador++; 
+        }
+        return comptador;
+    }
 
-   /**
-    * Calcula el nombre de dígits d’un número enter.
-    * Funciona tant per a nombres positius com negatius.
-    * Si el nombre és 0, retornaa 1.
-    *
-    * @param nombre Número del qual es vol saber el nombre de dígits
-    * @return Quantitat de dígits que té {@code nombre}
-    */
-   public static int nombreDigits(int nombre) { //et calc
-       if (nombre == 0) {
-           return 1; // el 0 té un dígit
-       }       
-       int comptador = 0;
-       while (nombre != 0) {
-           nombre /= 10;
-           comptador++; 
-       }
-       return comptador;
-   }
+    /**
+     * Calcula la suma dels primers n números enters.
+     *
+     * @param n Número enter positiu fins al qual es vol sumar
+     * @return Suma dels primers n números
+     */
+    public static int sumaPrimersNumeros(int n) {
+        int suma = 0, i = 0;
+        while (n >= i) {
+            suma += i;
+            i++;
+        }
+        return suma;
+    }
 
+    /**
+     * Calcula el factorial d’un nombre enter.
+     *
+     * @param n Número enter positiu del qual es vol calcular el factorial
+     * @return Factorial del número
+     */
+    public static int calcularFactorial(int n) {
+        int factorial = 1, i = 1;
+        while (n >= i) {
+            factorial *= i;
+            i++;
+        }
+        return factorial;
+    }
+    
+    /**
+     * Calcula la suma dels quadrats dels primers n números enters.
+     *
+     * @param n Número enter positiu fins al qual es vol sumar els quadrats
+     * @return Suma dels quadrats dels primers n números
+     */
+    public static int sumaQuadrats(int n) {
+        int suma = 0, i = 0;
+        while (n >= i) {
+            suma += (i*i);
+            i++;
+        }
+        return suma;
+    }
 
-   public static int sumaPrimersNumeros(int n) { //suma els primeros numeros (ex: 5. Seria 1+2+3+4+5 =15)
-       int suma = 0, i = 0;
-       while (n >= i) {
-           suma += i;
-           i++;
-       }
-       return suma;
-   }
-  
+    /**
+     * Calcula la potencia d’un número enter.
+     *
+     * @param base Número enter base
+     * @param exponent Número enter exponent
+     * @return Resultat de base elevat a exponent
+     */
+    public static int calcularPotencia(int base, int exponent) {
+        int i = 0, resultat = 1;
+        resultat *= base;
+        System.out.print(base);
+        while (i < exponent - 1) {
+            resultat *= base;
+            System.out.print(" * " + base);
+            i++;
+        }
+        System.out.println(" = " + resultat);
+        return resultat;
+    }
 
-   public static int calcularFactorial(int n) { //calcula la factorial d'un numero
-       int factorial = 1, i = 1;
-       while (n >= i) {
-           factorial *= i;
-           i++;
-       }
-       return factorial;
-   }
-   public static int sumaQuadrats(int n) { //calcula un numero al cuadrat
-       int suma = 0, i = 0;
-       while (n >= i) {
-           suma += (i*i);
-           i++;
-       }
-       return suma;
-   }
+    /**
+     * Llança una moneda un nombre determinat de vegades i compta les cares.
+     *
+     * @param n Nombre de llançaments de moneda
+     * @return Nombre de cares que han sortit
+     */
+    public static int caresMoneda(int n) {
+        Random random = new Random();
+        int moneda = 0, cara = 0, creu = 0, i = 0;
+        while (i <= n) {
+            moneda = random.nextInt(0,2);
+            if(moneda==1){
+                creu++;
+            } else {
+                cara++;
+            }
+            i++;
+        }
+        return cara;
+    }
 
+    /**
+     * Calcula el preu final d'una entrada de cinema amb descomptes i recàrrecs.
+     *
+     * @param preu_base Preu base de l'entrada
+     * @param cap_setmana Indica si és cap de setmana
+     * @param carnet_jove Indica si es té carnet jove
+     * @return Preu final de l'entrada
+     */
+    public static double entradaCinema(double preu_base, boolean cap_setmana, boolean carnet_jove) {
+        double per = 1.0;
+        if (cap_setmana) {
+            per *= 1.1;
+        }
+        if (carnet_jove) {
+            per *= 0.85;
+        }
+        return preu_base * per;
+    }
 
-   public static int calcularPotencia(int base, int exponent) { //calcula base a la potencia d'un exponent
-       int i = 0, resultat = 1;
-       resultat *=base;
-       System.out.print(base);
-       while (i < exponent - 1) {
-           resultat *= base;
-           System.out.print(" * "+base);
-           i++;
-       }
-       System.out.println(" = "+ resultat);
-       return resultat;
-   }
+    /**
+     * Mostra el menú d'opcions de la calculadora i executa les funcions corresponents.
+     */
+    public static void MostraMenu() {
+        int resposta = 0;
+        int int_val_usuari1 = 0, int_val_usuari2 = 0;
+        Scanner teclat = new Scanner(System.in);
 
-
-   public static int caresMoneda(int n) { //caulcual el numero de cares que surt en uns llançament de monedes determinats (feta a partir d'una activitat de programació)
-       Random random = new Random();
-       int moneda = 0, cara = 0, creu = 0, i = 0;
-       while (i <= n){
-           moneda = random.nextInt(0,2);
-           if(moneda==1){
-               creu++;
-           } else {
-               cara++;
-           }
-           i++;
-       }
-       return cara;
-   }
-  
-   public static double entradaCinema(double preu_base, boolean cap_setmana, boolean carnet_jove) { //calcular l'entrada del cinema (feta a partir d'una activitat de programació)
-       double per = 1.0;
-       if (cap_setmana == true) {
-           per = per * 1.1;
-       }
-       if (carnet_jove == true) {
-           per = per *0.85;
-       }
-       double preuFinal = preu_base*per;
-       return preuFinal;
-   }
-
-   public static void MostraMenu() {
-    int resposta = 0;
-       int int_val_usuari1 = 0, int_val_usuari2 = 0;
-       Scanner teclat = new Scanner(System.in);
-
-
-       while (true){
-           System.out.println("Menu Supercalculadora");
-           System.out.println("\n1- Suma dels primers n números\n\n2- Factorial d'un nombre\n\n3- Suma dels quadrats dels primers n números\n\n4- Potència dels primers n números\n\n5- Nombre de dígits d'un nombre\n\n6- Sortir\n\n7- Entrada cinema");
-           try{
-               resposta = teclat.nextInt();
-               if (resposta == 1){
-                   System.out.println("Introdueix un número enter positiu:");
-                   int_val_usuari1 = teclat.nextInt();
-                   System.out.println("Suma dels primers "+int_val_usuari1+" números: " + sumaPrimersNumeros(int_val_usuari1));
-               } else if (resposta == 2){
-                   System.out.println("Introdueix un número enter positiu:");
-                   int_val_usuari1 = teclat.nextInt();
-                   System.out.println("Factorial de "+int_val_usuari1+": " + calcularFactorial(int_val_usuari1));
-               } else if (resposta == 3){
-                   System.out.println("Introdueix un número enter positiu:");
-                   int_val_usuari1 = teclat.nextInt();
-                   System.out.println("Suma dels quadrats dels primers "+int_val_usuari1+" números: " + sumaQuadrats(int_val_usuari1));
-               } else if (resposta == 4){
-                   System.out.println("Introdueix un número enter positiu:");
-                   int_val_usuari1 = teclat.nextInt();
-                   System.out.println("Introdueix un altre número enter positiu:");
-                   int_val_usuari2 = teclat.nextInt();
-                   System.out.println("El número "+int_val_usuari1+" elevat a la "+int_val_usuari2+" és: " + calcularPotencia(int_val_usuari1, int_val_usuari2));
-               } else if (resposta == 5){
-                   System.out.println("Introdueix un número enter positiu:");
-                   int_val_usuari1 = teclat.nextInt();
-                   System.out.println("Nombre de dígits de "+int_val_usuari1+": " + nombreDigits(int_val_usuari1));
-               } else if (resposta == 6){
-                   System.out.println("Sortir");
-                   break;
-               } else if (resposta == 7){
-                   System.out.println("Introdueix el nombre de vegades que vols tirar la moneda:");
-                   int_val_usuari1 = teclat.nextInt();
-                   System.out.println("Nombre de cares obtingudes: " + caresMoneda(int_val_usuari1));
-               } else if (resposta == 8){
-                   System.out.println("Introdueix el preu base de l'entrada:");
-                   double preu_base = teclat.nextDouble();
-                   System.out.println("Es cap de setmana? (true/false):");
-                   boolean cap_setmana = teclat.nextBoolean();
-                   System.out.println("Tens carnet jove? (true/false):");
-                   boolean carnet_jove = teclat.nextBoolean();
-                   System.out.println("Preu entrada cinema: " + entradaCinema(preu_base, cap_setmana, carnet_jove)+"€");
-               } else {
-                   System.out.println("Opció no vàlida, torna-ho a intentar");
-               }
-           } catch (InputMismatchException e) {
-               System.out.println("El numero no és un valor no valid");
-               teclat.nextLine();
-           }
-       }
-   }
+        while (true){
+            System.out.println("Menu Supercalculadora");
+            System.out.println("\n1- Suma dels primers n números\n\n2- Factorial d'un nombre\n\n3- Suma dels quadrats dels primers n números\n\n4- Potència dels primers n números\n\n5- Nombre de dígits d'un nombre\n\n6- Sortir\n\n7- Cares moneda \n\n8- Entrada cinema");
+            try{
+                resposta = teclat.nextInt();
+                if (resposta == 1){
+                    System.out.println("Introdueix un número enter positiu:");
+                    int_val_usuari1 = teclat.nextInt();
+                    System.out.println("Suma dels primers "+int_val_usuari1+" números: " + sumaPrimersNumeros(int_val_usuari1));
+                } else if (resposta == 2){
+                    System.out.println("Introdueix un número enter positiu:");
+                    int_val_usuari1 = teclat.nextInt();
+                    System.out.println("Factorial de "+int_val_usuari1+": " + calcularFactorial(int_val_usuari1));
+                } else if (resposta == 3){
+                    System.out.println("Introdueix un número enter positiu:");
+                    int_val_usuari1 = teclat.nextInt();
+                    System.out.println("Suma dels quadrats dels primers "+int_val_usuari1+" números: " + sumaQuadrats(int_val_usuari1));
+                } else if (resposta == 4){
+                    System.out.println("Introdueix un número enter positiu:");
+                    int_val_usuari1 = teclat.nextInt();
+                    System.out.println("Introdueix un altre número enter positiu:");
+                    int_val_usuari2 = teclat.nextInt();
+                    System.out.println("El número "+int_val_usuari1+" elevat a la "+int_val_usuari2+" és: " + calcularPotencia(int_val_usuari1, int_val_usuari2));
+                } else if (resposta == 5){
+                    System.out.println("Introdueix un número enter positiu:");
+                    int_val_usuari1 = teclat.nextInt();
+                    System.out.println("Nombre de dígits de "+int_val_usuari1+": " + nombreDigits(int_val_usuari1));
+                } else if (resposta == 6){
+                    System.out.println("Sortir");
+                    break;
+                } else if (resposta == 7){
+                    System.out.println("Introdueix el nombre de vegades que vols tirar la moneda:");
+                    int_val_usuari1 = teclat.nextInt();
+                    System.out.println("Nombre de cares obtingudes: " + caresMoneda(int_val_usuari1));
+                } else if (resposta == 8){
+                    System.out.println("Introdueix el preu base de l'entrada:");
+                    double preu_base = teclat.nextDouble();
+                    System.out.println("Es cap de setmana? (true/false):");
+                    boolean cap_setmana = teclat.nextBoolean();
+                    System.out.println("Tens carnet jove? (true/false):");
+                    boolean carnet_jove = teclat.nextBoolean();
+                    System.out.println("Preu entrada cinema: " + entradaCinema(preu_base, cap_setmana, carnet_jove)+"€");
+                } else {
+                    System.out.println("Opció no vàlida, torna-ho a intentar");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("El numero no és un valor no valid");
+                teclat.nextLine();
+            }
+        }
+    }
 }
-
-
-
-
-
-
-
-

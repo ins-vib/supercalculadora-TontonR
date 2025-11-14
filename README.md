@@ -3,6 +3,7 @@
 # 🧮 SuperCalculadora
 
 ## Objectiu
+
 Implementar els mètodes d’una classe `SuperCalculadora` que permetin realitzar diferents operacions matemàtiques bàsiques.
 
 ---
@@ -11,21 +12,21 @@ Implementar els mètodes d’una classe `SuperCalculadora` que permetin realitza
 
 La classe **`SuperCalculadora`** ha de contenir els següents mètodes:
 
-- `sumaPrimersNumeros(int n)`: retorna la suma dels primers *n* números positius  
-  *(exemple: 1 + 2 + ... + n)*
+- `sumaPrimersNumeros(int n)`: retorna la suma dels primers _n_ números positius  
+  _(exemple: 1 + 2 + ... + n)_
 
-- `calcularFactorial(int n)`: retorna el factorial de *n*  
-  *(exemple: 5! = 5 × 4 × 3 × 2 × 1)*
+- `calcularFactorial(int n)`: retorna el factorial de _n_  
+  _(exemple: 5! = 5 × 4 × 3 × 2 × 1)_
 
-- `sumaQuadrats(int n)`: retorna la suma dels quadrats dels primers *n* números  
-  *(exemple: 1² + 2² + ... + n²)*
+- `sumaQuadrats(int n)`: retorna la suma dels quadrats dels primers _n_ números  
+  _(exemple: 1² + 2² + ... + n²)_
 
 - `calcularPotencia(int base, int exponent)`: retorna el resultat de la base elevada a l'exponent.  
-  S'ha de resoldre **fent sumes**, no utilitzant l'operador `*` ni `Math.pow()`.  
-  *(exemple: 2 + 2 + 2 = 2³)*
+  S'ha de resoldre **fent multiplicacion**, no utilitzant l'operador `+` ni `Math.pow()`.  
+  _(exemple: 2 _ 2 +_2 = 2³)_
 
-- `nombreDigits(int n)`: retorna el nombre de dígits de *n*  
-  *(exemple: el nombre 1234 té 4 dígits)*
+- `nombreDigits(int n)`: retorna el nombre de dígits de _n_  
+  _(exemple: el nombre 1234 té 4 dígits)_
 
 ---
 
@@ -49,6 +50,7 @@ Al mètode `main` de la vostra aplicació, heu de:
 ---
 
 ## 🧭 Exemple de Menú
+
 Menú de SuperCalculadora:
 
 1- Suma dels primers n números
@@ -69,16 +71,16 @@ Després d'escollir una opció, el programa ha de sol·licitar els valors necess
 
 ## ⚙️ Requisits addicionals
 
+Tots els càlculs s'han de fer dins dels mètodes.
 
-  Tots els càlculs s'han de fer dins dels mètodes.
 - Utilitzeu **estructures de control** (`while`, `for`) per implementar els bucles necessaris.
 - El menú ha de permetre que l'usuari **continuï executant operacions** fins que seleccioni l'opció de **Sortir**.
 
 ---
 
 ## 💡 Consell
-Prova cada mètode per separat abans d’integrar-lo al menú principal per assegurar que els resultats siguin correctes.
 
+Prova cada mètode per separat abans d’integrar-lo al menú principal per assegurar que els resultats siguin correctes.
 
 ## 📘 Generar la documentació Javadoc de tots els paquets
 

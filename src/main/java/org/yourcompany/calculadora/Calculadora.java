@@ -14,7 +14,102 @@ public class Calculadora {
 
 
    public static void main(String[] args) {
-       int resposta = 0;
+       MostraMenu();
+   }
+
+
+   /**
+    * Calcula el nombre de dígits d’un número enter.
+    * Funciona tant per a nombres positius com negatius.
+    * Si el nombre és 0, retornaa 1.
+    *
+    * @param nombre Número del qual es vol saber el nombre de dígits
+    * @return Quantitat de dígits que té {@code nombre}
+    */
+   public static int nombreDigits(int nombre) { //et calc
+       if (nombre == 0) {
+           return 1; // el 0 té un dígit
+       }       
+       int comptador = 0;
+       while (nombre != 0) {
+           nombre /= 10;
+           comptador++; 
+       }
+       return comptador;
+   }
+
+
+   public static int sumaPrimersNumeros(int n) { //suma els primeros numeros (ex: 5. Seria 1+2+3+4+5 =15)
+       int suma = 0, i = 0;
+       while (n >= i) {
+           suma += i;
+           i++;
+       }
+       return suma;
+   }
+  
+
+   public static int calcularFactorial(int n) { //calcula la factorial d'un numero
+       int factorial = 1, i = 1;
+       while (n >= i) {
+           factorial *= i;
+           i++;
+       }
+       return factorial;
+   }
+   public static int sumaQuadrats(int n) { //calcula un numero al cuadrat
+       int suma = 0, i = 0;
+       while (n >= i) {
+           suma += (i*i);
+           i++;
+       }
+       return suma;
+   }
+
+
+   public static int calcularPotencia(int base, int exponent) { //calcula base a la potencia d'un exponent
+       int i = 0, resultat = 1;
+       resultat *=base;
+       System.out.print(base);
+       while (i < exponent - 1) {
+           resultat *= base;
+           System.out.print(" * "+base);
+           i++;
+       }
+       System.out.println(" = "+ resultat);
+       return resultat;
+   }
+
+
+   public static int caresMoneda(int n) { //caulcual el numero de cares que surt en uns llançament de monedes determinats (feta a partir d'una activitat de programació)
+       Random random = new Random();
+       int moneda = 0, cara = 0, creu = 0, i = 0;
+       while (i <= n){
+           moneda = random.nextInt(0,2);
+           if(moneda==1){
+               creu++;
+           } else {
+               cara++;
+           }
+           i++;
+       }
+       return cara;
+   }
+  
+   public static double entradaCinema(double preu_base, boolean cap_setmana, boolean carnet_jove) { //calcular l'entrada del cinema (feta a partir d'una activitat de programació)
+       double per = 1.0;
+       if (cap_setmana == true) {
+           per = per * 1.1;
+       }
+       if (carnet_jove == true) {
+           per = per *0.85;
+       }
+       double preuFinal = preu_base*per;
+       return preuFinal;
+   }
+
+   public static void MostraMenu() {
+    int resposta = 0;
        int int_val_usuari1 = 0, int_val_usuari2 = 0;
        Scanner teclat = new Scanner(System.in);
 
@@ -70,94 +165,9 @@ public class Calculadora {
            }
        }
    }
-
-
-   /**
-    * Calcula el nombre de dígits d’un número enter.
-    * Funciona tant per a nombres positius com negatius.
-    * Si el nombre és 0, retornaa 1.
-    *
-    * @param nombre Número del qual es vol saber el nombre de dígits
-    * @return Quantitat de dígits que té {@code nombre}
-    */
-   public static int nombreDigits(int nombre) {
-       if (nombre == 0) {
-           return 1; // el 0 té un dígit
-       }       
-       int comptador = 0;
-       while (nombre != 0) {
-           nombre /= 10;
-           comptador++; 
-       }
-       return comptador;
-   }
-
-
-   public static int sumaPrimersNumeros(int n) {
-       int suma = 0, i = 0;
-       while (n >= i) {
-           suma += i;
-           i++;
-       }
-       return suma;
-   }
-  
-
-   public static int calcularFactorial(int n) {
-       int factorial = 1, i = 1;
-       while (n >= i) {
-           factorial *= i;
-           i++;
-       }
-       return factorial;
-   }
-   public static int sumaQuadrats(int n) {
-       int suma = 0, i = 0;
-       while (n >= i) {
-           suma += (i*i);
-           i++;
-       }
-       return suma;
-   }
-
-
-   public static int calcularPotencia(int base, int exponent) {
-       int i = 0, resultat = 1;
-       while (i < exponent) {
-           resultat *= base;
-           i++;
-       }
-       return resultat;
-   }
-
-
-   public static int caresMoneda(int n) {
-       Random random = new Random();
-       int moneda = 0, cara = 0, creu = 0, i = 0;
-       while (i <= n){
-           moneda = random.nextInt(0,2);
-           if(moneda==1){
-               creu++;
-           } else {
-               cara++;
-           }
-           i++;
-       }
-       return cara;
-   }
-  
-   public static double entradaCinema(double preu_base, boolean cap_setmana, boolean carnet_jove) {
-       double per = 1.0;
-       if (cap_setmana == true) {
-           per = per * 1.1;
-       }
-       if (carnet_jove == true) {
-           per = per *0.85;
-       }
-       double preuFinal = preu_base*per;
-       return preuFinal;
-   }
 }
+
+
 
 
 
